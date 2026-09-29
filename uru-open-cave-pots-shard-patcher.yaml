@@ -28,5 +28,6 @@ script:
       file: patcher
   - task:
       executable: $GAMEDIR/drive_c/Program Files/Open Cave/tocpatch.v3.exe
+      args: /D="C:\Program Files\Open Cave"
       name: wineexec
       prefix: $GAMEDIR
