@@ -5,7 +5,7 @@ user: Korovev
 runner: wine
 slug: uru-toc-moul-shard-installer
 version: Installer
-notes: >-
+notes: |
   If the client crashes or you get visual artifacts, you may need to disable DXVK.
   Please uncheck the "Launch The Open Cave..." option from the last page of the installer.
   If the script fails to download the Windows installer, please download it manually from:
