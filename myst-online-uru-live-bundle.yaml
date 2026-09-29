@@ -33,17 +33,23 @@ script:
     launch_configs:
     - exe: $GAMEDIR/drive_c/Program Files (x86)/Gehn Shard/UruLauncher.exe
       name: Gehn
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/Gehn Shard/
     - exe: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul/UruLauncher.exe
       name: Open Cave MOUL
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul/
     - exe: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime/UruLauncher.exe
       name: Minkata Prime
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime/
     - exe: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha/UruLauncher.exe
       args: /GateKeeperSrv=70.91.173.88:14717 /FileSrv=70.91.173.88:14717 /AuthSrv=70.91.173.88:14717
       name: Minkata Alpha
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha/
     - exe: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/Uru.exe
       name: Deep Island
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/
     - exe: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/UruSetup.exe
       name: Open Cave PotS
+      working_dir: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/
   installer:
   - task:
       name: create_prefix
