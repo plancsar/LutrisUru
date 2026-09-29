@@ -1,0 +1,38 @@
+id: 1203
+game_id: 3546
+game_slug: myst-online-uru-live
+name: 'Myst Online: Uru Live'
+year: 2007
+user: 'Xodetaetl, Korovev'
+runner: wine
+slug: myst-online-uru-live-official
+version: Official
+description: ''
+notes: >-
+ If the client crashes or you get visual artifacts, you may need to disable DXVK.
+ Please uncheck the "Launch Myst Online..." option from the last page of the installer.
+ If the script fails to download the installer, please download it manually from:
+ https://mystonline.com/play/
+credits: Cyan, inc.
+created_at: '2014-12-12T22:57:32.743000Z'
+script:
+  files:
+  - install: https://s3.amazonaws.com/downloadArea/MOULInstaller.exe
+  game:
+    exe: drive_c/Myst Online Uru Live(again)/UruLauncher.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      executable: $install
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: physx
+      name: winetricks
+      prefix: $GAMEDIR
+  wine:
+    overrides:
+      openal32: n,b

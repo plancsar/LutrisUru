@@ -1,0 +1,33 @@
+game_slug: uru-minkata-prime-shard
+name: 'Uru: Minkata Prime shard'
+year: 2011
+user: Korovev
+runner: wine
+slug: uru-minkata-prime-shard-patcher
+version: Patcher
+notes: >-
+ If the client crashes or you get visual artifacts, you may need to disable DXVK.
+ If the script fails to download the UruLauncher.exe launcher, please download it manually from:
+ https://foundry.openuru.org/accounts/download.php
+credits: https://openuru.org
+created_at: '2025-03-16T03:56:30.435279Z'
+script:
+  files:
+  - launcher: https://foundry.openuru.org/assets/Foundry/UruLauncher.exe
+  game:
+    exe: drive_c/Program Files/Minkata prime/UruLauncher.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      app: physx
+      name: winetricks
+      prefix: $GAMEDIR
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files/Minkata prime/
+      src: launcher
+  wine:
+    overrides:
+      openal32: n,b

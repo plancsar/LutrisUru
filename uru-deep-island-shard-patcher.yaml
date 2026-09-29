@@ -1,0 +1,28 @@
+game_slug: uru-deep-island-shard
+name: 'Uru: Deep Island Shard'
+year: 2010
+user: Korovev
+runner: wine
+slug: uru-deep-island-shard-patcher
+version: Patcher
+notes: >-
+  Requires a (possibly new) Uru: Complete Chronicles installation. Make sure you select the Uru CC folder, not a file inside it.
+credits: 'https://forum.guildofwriters.org/viewtopic.php?f=111&t=4610'
+created_at: '2026-09-14T18:31:02.944335Z'
+script:
+  files:
+  - urufolder: N/A:Please select an Uru CC folder
+  - patcher: https://www.the-deep-island.de/shard/di-patcher.zip
+  game:
+    exe: $GAMEDIR/drive_c/Program Files/Deep Island/Uru.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files/Deep Island/
+      src: urufolder
+  - extract:
+      dst: $GAMEDIR/drive_c/Program Files/Deep Island/
+      file: patcher

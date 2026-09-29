@@ -1,0 +1,34 @@
+game_slug: uru-gehn-shard
+name: 'Uru: Gehn shard'
+year: 2012
+user: Korovev
+runner: wine
+slug: uru-gehn-shard-installer
+version: Installer
+notes: >-
+  If the client crashes or you get visual artifacts, you may need to disable DXVK.
+ Please uncheck the "Launch Gehn shard..." option from the last page of the installer.
+ If the script fails to download the installer, please download it manually from:
+ https://guildofwriters.org/gehn
+credits: https://guildofwriters.org
+script:
+  files:
+  - install: https://downloads.guildofwriters.org/cwe/gehn_shard.exe
+  game:
+    exe: drive_c/Program Files (x86)/Gehn Shard/UruLauncher.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      executable: $install
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: physx
+      name: winetricks
+      prefix: $GAMEDIR
+  wine:
+    overrides:
+      openal32: n,b

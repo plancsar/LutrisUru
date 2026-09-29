@@ -1,0 +1,36 @@
+game_slug: uru-toc-moul-shard
+name: 'Uru: Open Cave MOUL shard'
+year: 2010
+user: Korovev
+runner: wine
+slug: uru-toc-moul-shard-installer
+version: Installer
+notes: >-
+  If the client crashes or you get visual artifacts, you may need to disable DXVK.
+  Please uncheck the "Launch The Open Cave..." option from the last page of the installer.
+  If the script fails to download the Windows installer, please download it manually from:
+  https://the-open-cave.net/moul/downloads
+credits: https://the-open-cave.net
+created_at: '2025-03-16T04:07:50.314670Z'
+script:
+  files:
+  - install: https://other.the-open-cave.net/installer/TOC-Moul-Installer.exe
+  game:
+    exe: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul/UruLauncher.exe
+    prefix: $GAMEDIR
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      executable: $install
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: physx
+      name: winetricks
+      prefix: $GAMEDIR
+  wine:
+    overrides:
+      openal32: n,b
+  

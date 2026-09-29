@@ -1,0 +1,103 @@
+game_slug: myst-online-uru-live
+name: 'Myst Online: Uru Live'
+year: 2007
+user: Korovev
+runner: wine
+slug: myst-online-uru-live-bundle
+version: Bundle
+description: ''
+notes: >-
+ This script installs all the shards in a single prefix, using a menu to pick the shard to launch.
+ If the client crashes or you get visual artifacts, you may need to disable DXVK.
+ Please uncheck the "Launch Myst Online..." option from the last page of the installer.
+ If the script fails to download the installers, please download them manually from:
+ https://mystonline.com/play/
+ https://guildofwriters.org/gehn
+ https://the-open-cave.net/moul/downloads
+ https://foundry.openuru.org/accounts/download.php
+ https://www.the-deep-island.de/shard/di-patcher.zip
+ https://other.the-open-cave.net/installer/tocpatch.v3.zip
+credits: Cyan, inc.
+script:
+  files:
+  - moula: https://s3.amazonaws.com/downloadArea/MOULInstaller.exe
+  - gehn: https://downloads.guildofwriters.org/cwe/gehn_shard.exe
+  - tocm: https://other.the-open-cave.net/installer/TOC-Moul-Installer.exe
+  - minka: https://foundry.openuru.org/assets/Foundry/UruLauncher.exe
+  - urucc: N/A:Please select an Uru Complete Chronicles folder
+  - dipatch: https://www.the-deep-island.de/shard/di-patcher.zip
+  - ocpatch: https://other.the-open-cave.net/installer/tocpatch.v3.zip
+  game:
+    exe: $GAMEDIR/drive_c/Myst Online Uru Live(again)/UruLauncher.exe
+    prefix: $GAMEDIR
+    launch_configs:
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/Gehn Shard/UruLauncher.exe
+      name: Gehn
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul/UruLauncher.exe
+      name: Open Cave MOUL
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime/UruLauncher.exe
+      name: Minkata Prime
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha/UruLauncher.exe
+      args: /GateKeeperSrv=70.91.173.88:14717 /FileSrv=70.91.173.88:14717 /AuthSrv=70.91.173.88:14717
+      name: Minkata Alpha
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/Uru.exe
+      name: Deep Island
+    - exe: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/UruSetup.exe
+      name: Open Cave PotS
+  installer:
+  - task:
+      name: create_prefix
+      prefix: $GAMEDIR
+  - task:
+      executable: $moula
+      name: wineexec
+      prefix: $GAMEDIR
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Gehn Shard/
+      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul
+      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime
+      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha
+      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
+  - task:
+      executable: $gehn
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      executable: $tocm
+      name: wineexec
+      prefix: $GAMEDIR
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime/
+      src: minka
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha/
+      src: minka
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/
+      src: urucc
+  - extract:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/
+      file: dipatch
+  - merge:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/
+      src: urucc
+  - extract:
+      dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/
+      file: ocpatch
+  - task:
+      executable: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/tocpatch.v3.exe
+      name: wineexec
+      prefix: $GAMEDIR
+  - task:
+      app: physx
+      name: winetricks
+      prefix: $GAMEDIR
+  wine:
+    overrides:
+      openal32: n,b
