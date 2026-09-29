@@ -8,7 +8,7 @@ runner: wine
 slug: myst-online-uru-live-official
 version: Official
 description: ''
-notes: >-
+notes: |
  If the client crashes or you get visual artifacts, you may need to disable DXVK.
  Please uncheck the "Launch Myst Online..." option from the last page of the installer.
  If the script fails to download the installer, please download it manually from:
