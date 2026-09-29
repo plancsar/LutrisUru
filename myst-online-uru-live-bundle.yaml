@@ -6,7 +6,7 @@ runner: wine
 slug: myst-online-uru-live-bundle
 version: Bundle
 description: ''
-notes: >-
+notes: |
  This script installs all the shards in a single prefix, using a menu to pick the shard to launch.
  If the client crashes or you get visual artifacts, you may need to disable DXVK.
  Please uncheck the "Launch Myst Online..." option from the last page of the installer.
