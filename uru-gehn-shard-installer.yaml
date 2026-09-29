@@ -23,6 +23,7 @@ script:
       prefix: $GAMEDIR
   - task:
       executable: $install
+      args: /S
       name: wineexec
       prefix: $GAMEDIR
   - task:
