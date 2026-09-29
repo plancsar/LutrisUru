@@ -52,18 +52,6 @@ script:
       executable: $moula
       name: wineexec
       prefix: $GAMEDIR
-  - merge:
-      dst: $GAMEDIR/drive_c/Program Files (x86)/Gehn Shard/
-      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
-  - merge:
-      dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Moul
-      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
-  - merge:
-      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime
-      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
-  - merge:
-      dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha
-      src: $GAMEDIR/drive_c/Myst Online Uru Live(again)
   - task:
       executable: $gehn
       name: wineexec
