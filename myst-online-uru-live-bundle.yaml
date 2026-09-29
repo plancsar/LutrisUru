@@ -54,10 +54,12 @@ script:
       prefix: $GAMEDIR
   - task:
       executable: $gehn
+      args: /S
       name: wineexec
       prefix: $GAMEDIR
   - task:
       executable: $tocm
+      args: /S
       name: wineexec
       prefix: $GAMEDIR
   - merge:
