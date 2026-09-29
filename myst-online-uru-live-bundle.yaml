@@ -92,6 +92,7 @@ script:
       file: ocpatch
   - task:
       executable: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/tocpatch.v3.exe
+      args: /D="C:\Program Files (x86)/TOC-Pots"
       name: wineexec
       prefix: $GAMEDIR
   - task:
