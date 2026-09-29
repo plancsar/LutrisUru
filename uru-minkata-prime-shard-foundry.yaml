@@ -5,7 +5,7 @@ user: Korovev
 runner: wine
 slug: uru-minkata-prime-shard-patcher
 version: Patcher
-notes: >-
+notes: |
  If the client crashes or you get visual artifacts, you may need to disable DXVK.
  If the script fails to download the UruLauncher.exe launcher, please download it manually from:
  https://foundry.openuru.org/accounts/download.php
