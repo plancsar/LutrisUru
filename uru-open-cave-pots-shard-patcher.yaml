@@ -22,12 +22,15 @@ script:
       name: create_prefix
       prefix: $GAMEDIR
   - merge:
+      description: "Copying Uru CC data, please wait..."
       dst: $GAMEDIR/drive_c/Program Files/Open Cave/
       src: urufolder
   - extract:
+      description: "Extracting the Open Cave PotS patcher..."
       dst: $GAMEDIR/drive_c/Program Files/Open Cave/
       file: patcher
   - task:
+      description: "Patching the Open Cave PotS..."
       executable: $GAMEDIR/drive_c/Program Files/Open Cave/tocpatch.v3.exe
       args: /S /D="C:\Program Files\Open Cave"
       name: wineexec
