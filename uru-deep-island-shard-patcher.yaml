@@ -22,8 +22,10 @@ script:
       name: create_prefix
       prefix: $GAMEDIR
   - merge:
+      description: "Copying Uru CC data, please wait..."
       dst: $GAMEDIR/drive_c/Program Files/Deep Island/
       src: urufolder
   - extract:
+      description: "Patching Deep Island..."
       dst: $GAMEDIR/drive_c/Program Files/Deep Island/
       file: patcher
