@@ -60,47 +60,59 @@ script:
       name: create_prefix
       prefix: $GAMEDIR
   - task:
+      description: "Running the MOULa installer..."
       executable: $moula
       name: wineexec
       prefix: $GAMEDIR
   - task:
+      description: "Running the Gehn installer..."
       executable: $gehn
       args: /S
       name: wineexec
       prefix: $GAMEDIR
   - task:
+      description: "Running the Open Cave installer..."
       executable: $tocm
       args: /S
       name: wineexec
       prefix: $GAMEDIR
   - task:
+      description: "Running the Open Cave Elysium installer..."
       executable: $toce
       args: /S
       name: wineexec
       prefix: $GAMEDIR
   - merge:
+      description: "Setting up the Minkata Prime folder..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata prime/
       src: minka
   - merge:
+      description: "Setting up the Minkata Alpha folder..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/Minkata alpha/
       src: minka
   - merge:
+      description: "Copying Uru CC data for Deep Island, please wait..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/
       src: urucc
   - extract:
+      description: "Patching Deep Island..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/Deep Island/
       file: dipatch
   - merge:
+      description: "Copying Uru CC data for the Open Cave PotS, please wait..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/
       src: urucc
   - extract:
+      description: "Extracting the Open Cave PotS patcher..."
       dst: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/
       file: ocpatch
   - task:
+      description: "Patching the Open Cave PotS..."
       executable: $GAMEDIR/drive_c/Program Files (x86)/TOC-Pots/tocpatch.v3.exe
       name: wineexec
       prefix: $GAMEDIR
   - task:
+      description: "Installing PhysX..."
       app: physx
       name: winetricks
       prefix: $GAMEDIR
